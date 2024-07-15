@@ -1,0 +1,14 @@
+# application.yml
+spring:
+  datasource:
+    driver-class-name: net.ucanaccess.jdbc.UcanaccessDriver
+    jdbc-url: jdbc:ucanaccess://C:/Dev/Database/accessdb/Database2.accdb;showSchema=true;memory=false
+    connectionProperties: 'jackcessOpener=com.ryan.ms_access.config.CodecOpener'
+    username:
+    password: access1234
+
+  jpa:
+    show-sql: true
+
+server:
+  port: 9090
