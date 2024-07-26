@@ -11,29 +11,22 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class Table1Controller {
 
-    private final Table1Service table1Service;
+  private final Table1Service table1Service;
 
-    @PostMapping
-    public ResponseEntity<?> createTable(
-            @RequestBody Table1 table
-    ){
-        table1Service.saveTable(table);
-        return ResponseEntity.ok("ok");
-    }
+  @PostMapping
+  public ResponseEntity<?> createTable(@RequestBody Table1 table) {
+    table1Service.saveTable(table);
+    return ResponseEntity.ok("ok");
+  }
 
-    @PostMapping("/return")
-    public ResponseEntity<?> createTableAndReturn(
-            @RequestBody Table1 table
-    ){
-        Table1 insertedTable = table1Service.saveTableAndReturn(table);
-        return ResponseEntity.ok(insertedTable);
-    }
+  @PostMapping("/return")
+  public ResponseEntity<?> createTableAndReturn(@RequestBody Table1 table) {
+    Table1 insertedTable = table1Service.saveTableAndReturn(table);
+    return ResponseEntity.ok(insertedTable);
+  }
 
-    @GetMapping
-    public ResponseEntity<?> getAllTable(){
-        return ResponseEntity.ok(
-                table1Service.getAllTable()
-        );
-    }
-
+  @GetMapping
+  public ResponseEntity<?> getAllTable() {
+    return ResponseEntity.ok(table1Service.getAllTable());
+  }
 }

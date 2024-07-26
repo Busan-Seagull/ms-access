@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
+	id 'com.diffplug.spotless' version '6.18.0'
 }
 
 group = 'com.ryan'
@@ -53,4 +54,34 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+spotless {
+	java {
+		// 구글 자바 포맷터 적용
+		googleJavaFormat()
+
+		// 불필요한 import 제거
+		removeUnusedImports()
+
+		// 줄 끝의 공백 제거
+		trimTrailingWhitespace()
+
+		// 파일 끝에 새 줄 추가
+		endWithNewline()
+
+		// 특정 패턴의 파일 제외 (필요한 경우)
+		// targetExclude 'src/main/generated/**/*.java'
+
+		// 라이선스 헤더 추가 (필요한 경우)
+		// licenseHeader '/* (C)$YEAR */'
+	}
+
+	// Kotlin 사용 시 (선택적)
+	kotlin {
+		ktlint()
+		trimTrailingWhitespace()
+		endWithNewline()
+	}
+
 }
